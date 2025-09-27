@@ -1,12 +1,8 @@
 public class MergeSort {
-    static int divideStep = 0;
     static int r = 0;
 
     public static void sort(int[] arr, int left, int right) {
         if (left < right) {
-            divideStep++;
-            System.out.println("(Divide) " + divideStep + " : left=" + left + " right=" + right);
-
             int mid = (left + right) / 2;
             sort(arr, left, mid);
             sort(arr, mid + 1, right);
@@ -16,16 +12,15 @@ public class MergeSort {
 
     private static void merge(int[] arr, int left, int mid, int right) {
         r++;
-        System.out.println(">> (Merge) " + r + " : left=" + left + " mid=" + mid + " right=" + right);
-
+        System.out.println(">> Round " + r);
         int n1 = mid - left + 1;
         int n2 = right - mid;
         int[] L = new int[n1];
         int[] R = new int[n2];
-
         for (int i = 0; i < n1; i++) {
             L[i] = arr[left + i];
         }
+
         for (int j = 0; j < n2; j++) {
             R[j] = arr[mid + 1 + j];
         }
